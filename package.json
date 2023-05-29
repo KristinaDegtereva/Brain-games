@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "[![Actions Status](https://github.com/KristinaDegtereva/frontend-project-44/workflows/hexlet-check/badge.svg)](https://github.com/KristinaDegtereva/frontend-project-44/actions)",
+  "bin": {
+    "nodejs-package": "bin/nodejs-package.js"
+  }, 
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
