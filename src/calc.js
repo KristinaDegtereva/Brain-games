@@ -1,22 +1,18 @@
-import readlineSync from 'readline-sync';
+import { game, randomNum, answer } from './index.js';
 
-console.log('Welcome to the Brain Games!');
-const userName = readlineSync.question('May I have your name? ');
-console.log(`Hello, ${userName}!`);
+game ();
 console.log('What is the result of the expression?');
 
-const randomNum = () => Math.floor(Math.random() * 100);
-
-const startRounds = () => {
+const startRoundsCalc = () => {
   const operators = ['+', '-', '*'];
   const num1 = randomNum();
   const num2 = randomNum();
   const randOperator = operators[Math.floor(Math.random() * operators.length)];
   console.log(`Question: ${num1} ${randOperator} ${num2}`);
 
-  const answer = readlineSync.question('Your answer: ');
+  answer();
 
-  const correctAnswer = () => {
+  const isCalc = () => {
     switch (randOperator) {
       case '+':
         return num1 + num2;
@@ -35,17 +31,4 @@ const startRounds = () => {
   return false;
 };
 
-const countRound = 3;
-const startGame = () => {
-  for (let i = 0; i < countRound; i += 1) {
-    const isCorrect = startRounds();
-
-    if (isCorrect === false) {
-      console.log(`Let's try again, ${userName}!`);
-      return;
-    }
-  }
-  console.log(`Congratulations, ${userName}!`);
-};
-
-export default startGame;
+export default startRoundsCalc;
