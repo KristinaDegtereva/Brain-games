@@ -1,18 +1,14 @@
-import { game, randomNum, answer } from './index.js';
+import startGame, { randomNum } from './index.js';
 
-game ();
-console.log('What is the result of the expression?');
+export const rules = 'What is the result of the expression?';
 
-const startRoundsCalc = () => {
+export const startRounds = () => {
   const operators = ['+', '-', '*'];
   const num1 = randomNum();
   const num2 = randomNum();
   const randOperator = operators[Math.floor(Math.random() * operators.length)];
-  console.log(`Question: ${num1} ${randOperator} ${num2}`);
 
-  answer();
-
-  const isCalc = () => {
+  const correctAnswer = () => {
     switch (randOperator) {
       case '+':
         return num1 + num2;
@@ -22,13 +18,10 @@ const startRoundsCalc = () => {
         return num1 * num2;
     }
   };
-
-  if (Number(answer) === correctAnswer()) {
-    console.log('Correct!');
-    return true;
-  }
-  console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer()}'`);
-  return false;
+  const question = (`${num1} ${randOperator} ${num2}`);
+  return [question, correctAnswer()];
 };
 
-export default startRoundsCalc;
+export default () => {
+  startGame(rules, startRounds);
+}
