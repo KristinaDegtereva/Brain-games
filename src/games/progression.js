@@ -21,7 +21,7 @@ export const startRounds = () => {
   const correctAnswer = () => `${prog[j]}`;
   const str = numProgression().join(' ');
   const re = `${prog[j]}`;
-  const question = () => str.replace(re, ' .. ');
+  const question = () => str.replace(re, '..');
 
   return [question, correctAnswer()];
 };
