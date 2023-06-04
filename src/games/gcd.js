@@ -8,18 +8,18 @@ export const startRounds = () => {
   const num2 = randomNum();
 
   const correctAnswer = () => {
-    const dividersNum1 = [];
-    const dividersNum2 = [];
+    const divisorsNum1 = [];
+    const divisorsNum2 = [];
 
     for (let i = 1; i <= num1; i += 1) {
       if (num1 % i === 0) {
-        dividersNum1.push(i);
+        divisorsNum1.push(i);
       }
     }
 
     for (let i = 1; i <= num2; i += 1) {
       if (num2 % i === 0) {
-        dividersNum2.push(i);
+        divisorsNum2.push(i);
       }
     }
     const commonDivisors = (arr1, arr2) => {
@@ -46,7 +46,7 @@ export const startRounds = () => {
       }
       return `${result.at(-1)}`;
     };
-    return commonDivisors(dividersNum1, dividersNum2);
+    return commonDivisors(divisorsNum1, divisorsNum2);
   };
   const question = (`${num1} ${num2}`);
   return [question, correctAnswer()];
