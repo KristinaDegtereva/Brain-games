@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync';
 
-export const randomNum = () => Math.floor(Math.random() * 100);
 const countRound = 3;
 
 const startGame = (rules, startRounds) => {
