@@ -7,7 +7,7 @@ export const startRounds = () => {
   let firstNum = randomNum();
   const prog = [firstNum];
   const num = randomNum();
-  const j = Math.floor(Math.random() * 11);
+  const hiddenNum = Math.floor(Math.random() * 11);
 
   const numProgression = () => {
     for (let i = 0; i < 9; i += 1) {
@@ -18,9 +18,9 @@ export const startRounds = () => {
     return prog;
   };
 
-  const correctAnswer = () => `${prog[j]}`;
+  const correctAnswer = () => `${prog[hiddenNum]}`;
   const str = numProgression().join(' ');
-  const re = `${prog[j]}`;
+  const re = `${prog[hiddenNum]}`;
   const question = () => str.replace(re, '..');
 
   return [question(), correctAnswer()];
