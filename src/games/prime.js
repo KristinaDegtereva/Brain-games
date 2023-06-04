@@ -5,13 +5,12 @@ export const rules = 'Answer "yes" if given number is prime. Otherwise answer "n
 
 export const startRounds = () => {
   const num = randomNum();
-  
+
   const isSimple = () => {
-    for (let i = 3; i < num; i += 1) {
-        if (num % i === 0 || num % 2 === 0) {
-        return;
-        } return true;
-      }
+    for (let i = 2; i < num; i += 1) {
+      if (num % i === 0) return false;
+    }
+    return num !== 1;
   };
   const question = (`${num}`);
   const correctAnswer = isSimple(num) ? 'yes' : 'no';
