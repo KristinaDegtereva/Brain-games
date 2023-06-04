@@ -23,7 +23,7 @@ export const startRounds = () => {
   const re = `${prog[j]}`;
   const question = () => str.replace(re, '..');
 
-  return [question, correctAnswer()];
+  return [question(), correctAnswer()];
 };
 
 export default () => {
