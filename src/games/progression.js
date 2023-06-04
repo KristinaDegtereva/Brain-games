@@ -5,12 +5,12 @@ export const rules = 'What number is missing in the progression?';
 
 export const startRounds = () => {
   let firstNum = randomNum();
-  const prog = [firstNum];
+  const prog = [];
   const num = randomNum();
   const hiddenNum = Math.floor(Math.random() * 11);
 
   const numProgression = () => {
-    for (let i = 0; i < 9; i += 1) {
+    for (let i = 0; i < 10; i += 1) {
       const nextNum = firstNum + num;
       firstNum = nextNum;
       prog.push(nextNum);
@@ -18,9 +18,9 @@ export const startRounds = () => {
     return prog;
   };
 
-  const correctAnswer = () => `${prog[hiddenNum]}`;
+  const correctAnswer = () => `${numProgression()[hiddenNum]}`;
   const str = numProgression().join(' ');
-  const re = `${prog[hiddenNum]}`;
+  const re = `${numProgression()[hiddenNum]}`;
   const question = () => str.replace(re, '..');
 
   return [question(), correctAnswer()];
