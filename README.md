@@ -25,7 +25,7 @@ How to launch
 'Brain-gcd' - brain-gcd
 'Вrain-progression' - brain-progression
 'Brain-prime' -  brain-prime
-``
+```
 
 ## Asciinema brain-even:
 <a href="https://asciinema.org/a/OxPXDMXYxPkXe8YeaAE6ZqZ0Q" target="_blank"><img src="https://asciinema.org/a/OxPXDMXYxPkXe8YeaAE6ZqZ0Q.svg" /></a>
