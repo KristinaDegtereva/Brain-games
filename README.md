@@ -9,16 +9,16 @@
 4. Вrain-progression - find the missing number from the progression;
 5. Brain-prime - prime number or not
 
-Node version
+## Node version
 ```
 v20.2.0
 ```
-How to install
+## How to install
 ```
 make install
 npm link
 ```
-How to launch
+## How to launch
 ```
 'Brain-even' - brain-even
 'Brain-calc' - brain-calc
