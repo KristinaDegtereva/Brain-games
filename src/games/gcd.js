@@ -1,55 +1,31 @@
 import startGame from '../index.js';
-import randomNum from '../utils.js';
+import getRandomIntInclusive from '../utils.js';
 
-export const rules = 'Find the greatest common divisor of given numbers.';
+const rules = 'Find the greatest common divisor of given numbers.';
 
-export const startRounds = () => {
-  const num1 = randomNum();
-  const num2 = randomNum();
+const calcGcd = (num1, num2) => {
+  let result = 0;
+  let a = num1;
+  let b = num2;
 
-  const correctAnswer = () => {
-    const divisorsNum1 = [];
-    const divisorsNum2 = [];
-
-    for (let i = 1; i <= num1; i += 1) {
-      if (num1 % i === 0) {
-        divisorsNum1.push(i);
-      }
+  while (a !== 0 && b !== 0) {
+    if (a > b) {
+      a %= b;
+    } else {
+      b %= a;
     }
+    result = a + b;
+  }
+  return result;
+};
 
-    for (let i = 1; i <= num2; i += 1) {
-      if (num2 % i === 0) {
-        divisorsNum2.push(i);
-      }
-    }
-    const commonDivisors = (arr1, arr2) => {
-      const size1 = arr1.length;
-      const size2 = arr2.length;
+const startRounds = () => {
+  const num1 = getRandomIntInclusive(1, 100);
+  const num2 = getRandomIntInclusive(1, 100);
 
-      let i1 = 0;
-      let i2 = 0;
-      const result = [];
-
-      while (i1 < size1 && i2 < size2) {
-        const lastCommon = result.at(-1);
-        const item1 = arr1[i1];
-        const item2 = arr2[i2];
-        if (item1 === item2 && item1 !== lastCommon) {
-          result.push(item1);
-          i1 += 1;
-          i2 += 1;
-        } else if (item1 > item2) {
-          i2 += 1;
-        } else {
-          i1 += 1;
-        }
-      }
-      return `${result.at(-1)}`;
-    };
-    return commonDivisors(divisorsNum1, divisorsNum2);
-  };
+  const correctAnswer = String(calcGcd(num1, num2));
   const question = (`${num1} ${num2}`);
-  return [question, correctAnswer()];
+  return [question, correctAnswer];
 };
 
 export default () => {

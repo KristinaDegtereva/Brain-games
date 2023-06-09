@@ -1,3 +1,7 @@
-const randomNum = () => Math.floor(Math.random() * 100 + 1);
+const getRandomIntInclusive = (min, max) => {
+  const minNum = Math.ceil(min);
+  const maxNum = Math.floor(max);
+  return Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+};
 
-export default randomNum;
+export default getRandomIntInclusive;

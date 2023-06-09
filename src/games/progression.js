@@ -1,29 +1,36 @@
 import startGame from '../index.js';
-import randomNum from '../utils.js';
+import getRandomIntInclusive from '../utils.js';
 
-export const rules = 'What number is missing in the progression?';
+const rules = 'What number is missing in the progression?';
+const progressionLength = 10;
 
-export const startRounds = () => {
-  let firstNum = randomNum();
-  const prog = [firstNum];
-  const num = randomNum();
-  const hiddenNum = Math.floor(Math.random() * 11);
+const numProgression = (temp, progressionStep, progression) => {
 
-  const numProgression = () => {
-    for (let i = 0; i < 9; i += 1) {
-      const nextNum = firstNum + num;
-      firstNum = nextNum;
-      prog.push(nextNum);
-    }
-    return prog;
-  };
+  for (let i = 0; i < progressionLength; i += 1) {
+    const nextNum = temp + progressionStep;
+    temp = nextNum;
+    progression.push(nextNum);
+  }
+  return progression;
+};
 
-  const correctAnswer = () => `${numProgression()[hiddenNum]}`;
-  const str = numProgression().join(' ');
-  const re = `${numProgression()[hiddenNum]}`;
-  const question = () => str.replace(re, '..');
 
-  return [question(), correctAnswer()];
+const startRounds = () => {
+  const firstNum = getRandomIntInclusive(1, 100);
+  let temp = firstNum;
+  const progressionStep = getRandomIntInclusive(1, 100);
+  const progression = [];
+
+  const hiddenNum = getRandomIntInclusive(0, progressionLength);
+
+  const correctProgression = numProgression(temp, progressionStep, progression)
+  const correctAnswer = `${correctProgression[hiddenNum]}`;
+  console.log(correctAnswer);
+
+  const strProgression = correctProgression.join(' ');
+  const question = strProgression.replace(correctAnswer, '..');
+
+  return [question, correctAnswer];
 };
 
 export default () => {

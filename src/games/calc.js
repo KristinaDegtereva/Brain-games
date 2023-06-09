@@ -1,26 +1,31 @@
 import startGame from '../index.js';
-import randomNum from '../utils.js';
+import getRandomIntInclusive from '../utils.js';
 
-export const rules = 'What is the result of the expression?';
+const rules = 'What is the result of the expression?';
+const operators = ['+', '-', '*'];
 
-export const startRounds = () => {
-  const operators = ['+', '-', '*'];
-  const num1 = randomNum();
-  const num2 = randomNum();
-  const randOperator = operators[Math.floor(Math.random() * operators.length)];
+const calcAnswer = (num1, randOperator, num2) => {
+  switch (randOperator) {
+    case '+':
+      return num1 + num2;
+    case '-':
+      return num1 - num2;
+    case '*':
+      return num1 * num2;
+    default:
+      throw new Error('Unknown operators!');
+  }
+};
 
-  const correctAnswer = () => {
-    switch (randOperator) {
-      case '+':
-        return num1 + num2;
-      case '-':
-        return num1 - num2;
-      default:
-        return num1 * num2;
-    }
-  };
+const startRounds = () => {
+  const randOperator = operators[getRandomIntInclusive(0, 2)];
+
+  const num1 = getRandomIntInclusive(1, 100);
+  const num2 = getRandomIntInclusive(1, 100);
+
+  const correctAnswer = String(calcAnswer(num1, randOperator, num2));
   const question = (`${num1} ${randOperator} ${num2}`);
-  return [question, correctAnswer()];
+  return [question, correctAnswer];
 };
 
 export default () => {
