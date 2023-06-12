@@ -4,11 +4,12 @@ import getRandomIntInclusive from '../utils.js';
 const rules = 'What number is missing in the progression?';
 const progressionLength = 10;
 
-const numProgression = (progressionStep, progression) => {
-  let firstNum = getRandomIntInclusive(1, 100);
+const numProgression = (firstNum, progressionStep) => {
+  const progression = [];
+  let temp = firstNum;
   for (let i = 0; i < progressionLength; i += 1) {
-    const nextNum = firstNum + progressionStep;
-    firstNum = nextNum;
+    const nextNum = temp + progressionStep;
+    temp = nextNum;
     progression.push(nextNum);
   }
   return progression;
@@ -16,11 +17,11 @@ const numProgression = (progressionStep, progression) => {
 
 const startRounds = () => {
   const progressionStep = getRandomIntInclusive(1, 100);
-  const progression = [];
+  const firstNum = getRandomIntInclusive(1, 100);
 
-  const hiddenNum = getRandomIntInclusive(0, progressionLength);
+  const hiddenNum = getRandomIntInclusive(0, progressionLength - 1);
 
-  const correctProgression = numProgression(progressionStep, progression);
+  const correctProgression = numProgression(firstNum, progressionStep);
   const correctAnswer = `${correctProgression[hiddenNum]}`;
 
   const strProgression = correctProgression.join(' ');

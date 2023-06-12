@@ -7,22 +7,22 @@ const isPrime = (num) => {
   const sqrt = Math.sqrt(num);
 
   if (num < 2) {
-    return 'no';
+    return false;
   }
 
   for (let i = 2; i < sqrt; i += 1) {
     if (num % i === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
+  return true;
 };
 
 const startRounds = () => {
   const num = getRandomIntInclusive(1, 100);
 
   const question = (`${num}`);
-  const correctAnswer = isPrime(num);
+  const correctAnswer = isPrime(num) ? 'yes' : 'no';
 
   return [question, correctAnswer];
 };
