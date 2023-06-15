@@ -15,13 +15,13 @@ const getProgression = (firstNum, progressionStep, progressionLength) => {
 };
 
 const preparingTheRound = () => {
-  const progressionLength = 10;
   const progressionStep = getRandomIntInclusive(1, 100);
   const firstNum = getRandomIntInclusive(1, 100);
+  const progressionLength = 10;
 
   const hiddenNum = getRandomIntInclusive(0, progressionLength - 1);
 
-  const correctProgression = getProgression(firstNum, progressionStep);
+  const correctProgression = getProgression(firstNum, progressionStep, progressionLength);
   const correctAnswer = `${correctProgression[hiddenNum]}`;
 
   const strProgression = correctProgression.join(' ');
