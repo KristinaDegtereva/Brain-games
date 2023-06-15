@@ -1,9 +1,9 @@
 import startGame from '../index.js';
 import getRandomIntInclusive from '../utils.js';
 
-const rules = 'Find the greatest common divisor of given numbers.';
+const rule = 'Find the greatest common divisor of given numbers.';
 
-const calcGcd = (num1, num2) => {
+const calculateTheGcd = (num1, num2) => {
   let result = 0;
   let a = num1;
   let b = num2;
@@ -19,15 +19,15 @@ const calcGcd = (num1, num2) => {
   return result;
 };
 
-const startRounds = () => {
+const preparingTheRound = () => {
   const num1 = getRandomIntInclusive(1, 100);
   const num2 = getRandomIntInclusive(1, 100);
 
-  const correctAnswer = String(calcGcd(num1, num2));
+  const correctAnswer = String(calculateTheGcd(num1, num2));
   const question = (`${num1} ${num2}`);
   return [question, correctAnswer];
 };
 
 export default () => {
-  startGame(rules, startRounds);
+  startGame(rule, preparingTheRound);
 };

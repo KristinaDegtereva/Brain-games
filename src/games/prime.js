@@ -1,7 +1,7 @@
 import startGame from '../index.js';
 import getRandomIntInclusive from '../utils.js';
 
-const rules = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+const rule = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (num) => {
   const sqrt = Math.sqrt(num);
@@ -18,7 +18,7 @@ const isPrime = (num) => {
   return true;
 };
 
-const startRounds = () => {
+const preparingTheRound = () => {
   const num = getRandomIntInclusive(1, 100);
 
   const question = (`${num}`);
@@ -28,5 +28,5 @@ const startRounds = () => {
 };
 
 export default () => {
-  startGame(rules, startRounds);
+  startGame(rule, preparingTheRound);
 };

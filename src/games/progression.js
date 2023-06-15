@@ -1,10 +1,9 @@
 import startGame from '../index.js';
 import getRandomIntInclusive from '../utils.js';
 
-const rules = 'What number is missing in the progression?';
-const progressionLength = 10;
+const rule = 'What number is missing in the progression?';
 
-const numProgression = (firstNum, progressionStep) => {
+const getProgression = (firstNum, progressionStep, progressionLength) => {
   const progression = [];
   let temp = firstNum;
   for (let i = 0; i < progressionLength; i += 1) {
@@ -15,13 +14,14 @@ const numProgression = (firstNum, progressionStep) => {
   return progression;
 };
 
-const startRounds = () => {
+const preparingTheRound = () => {
+  const progressionLength = 10;
   const progressionStep = getRandomIntInclusive(1, 100);
   const firstNum = getRandomIntInclusive(1, 100);
 
   const hiddenNum = getRandomIntInclusive(0, progressionLength - 1);
 
-  const correctProgression = numProgression(firstNum, progressionStep);
+  const correctProgression = getProgression(firstNum, progressionStep);
   const correctAnswer = `${correctProgression[hiddenNum]}`;
 
   const strProgression = correctProgression.join(' ');
@@ -31,5 +31,5 @@ const startRounds = () => {
 };
 
 export default () => {
-  startGame(rules, startRounds);
+  startGame(rule, preparingTheRound);
 };

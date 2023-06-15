@@ -1,11 +1,10 @@
 import startGame from '../index.js';
 import getRandomIntInclusive from '../utils.js';
 
+const rule = 'Answer "yes" if the number is even, otherwise answer "no".';
 const isEven = (num) => num % 2 === 0;
 
-const rules = 'Answer "yes" if the number is even, otherwise answer "no".';
-
-const startRounds = () => {
+const preparingTheRound = () => {
   const num = getRandomIntInclusive(1, 100);
 
   const correctAnswer = isEven(num) ? 'yes' : 'no';
@@ -15,5 +14,5 @@ const startRounds = () => {
 };
 
 export default () => {
-  startGame(rules, startRounds);
+  startGame(rule, preparingTheRound);
 };
